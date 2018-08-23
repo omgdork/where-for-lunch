@@ -13,9 +13,11 @@ class HomePage extends Component {
     this.props.fetchPlaces(this.props.condition);
   }
 
-  handleOnConditionChange = (value) => {
-    this.props.setRadius(value);
+  handleOnConditionChange = ({ radius, price }) => {
+    this.props.setRadius(radius);
+    this.props.setPrice(price);
   }
+
   render() {
     const { condition, place } = this.props;
     const hasCoordinates = condition.longitude && condition.latitude;
@@ -41,6 +43,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({
     fetchPlaces: placeActions.fetchPlaces,
     setRadius: conditionActions.setRadius,
+    setPrice: conditionActions.setPrice,
   }, dispatch);
 
 HomePage.propTypes = {
@@ -48,7 +51,9 @@ HomePage.propTypes = {
   place: PropTypes.object,
   fetchPlaces: PropTypes.func,
   setRadius: PropTypes.func,
+  setPrice: PropTypes.func,
 };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
