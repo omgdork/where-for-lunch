@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import placeActions from 'actions/placeActions';
 import Place from 'components/Place/Place';
 import Gallery from 'components/Gallery/Gallery';
+import Map from 'components/Map/Map';
 
 class DetailsPage extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class DetailsPage extends Component {
       <div className="detailsPageWrapper">
         <Place place={place} />
         <Gallery photos={place.photos} />
+        <Map coordinates={place.coordinates} />
       </div>
     );
   }
@@ -33,6 +35,10 @@ DetailsPage.propTypes = {
     reviewCount: PropTypes.number,
     categories: PropTypes.arrayOf(PropTypes.string),
     photos: PropTypes.arrayOf(PropTypes.string),
+    coordinates: PropTypes.shape({
+      longitude: PropTypes.number,
+      latitude: PropTypes.number,
+    }),
   }).isRequired,
   fetchPlace: PropTypes.func.isRequired,
   match: PropTypes.shape({
@@ -44,7 +50,7 @@ DetailsPage.propTypes = {
 
 DetailsPage.defaultProps = {
   place: {
-    name: '',
+    name: null,
     address: null,
     phone: null,
     price: null,
