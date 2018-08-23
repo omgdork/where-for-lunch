@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Gallery /> should render a list of photos when photos property is supplied. 1`] = `
+<ul
+  className="gallery"
+>
+  <li>
+    <img
+      alt="image-1"
+      src="https://s3-media1.fl.yelpcdn.com/bphoto/LmH0H3McZ-WQyf8qAB0h2A/o.jpg"
+    />
+  </li>
+  <li>
+    <img
+      alt="image-2"
+      src="https://s3-media2.fl.yelpcdn.com/bphoto/lbNYdvheIAC2mll5ROvjRw/o.jpg"
+    />
+  </li>
+  <li>
+    <img
+      alt="image-3"
+      src="https://s3-media2.fl.yelpcdn.com/bphoto/dd8oRzkl7VCPpD1d3MV9cw/o.jpg"
+    />
+  </li>
+</ul>
+`;
+
+exports[`<Gallery /> should render an empty list if photos property is not supplied. 1`] = `
+<ul
+  className="gallery"
+/>
+`;

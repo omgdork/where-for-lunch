@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './Place.css';
 
 const Place = ({ place }) => {
+  const placeName = place.name ? <Link to={`/details/${place.id}`}>{place.name}</Link> : 'Where for lunch?';
+
   return (
     <div className={styles.root}>
-      <div className={styles.name}>{ place.name || 'Where for lunch?' }</div>
+      <div className={styles.name}>{placeName}</div>
       <div className={styles.box}>
         <div>{ place.address }</div>
         <div>{ place.phone }</div>
