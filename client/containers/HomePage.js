@@ -10,7 +10,6 @@ import Condition from 'components/Condition/Condition';
 
 class HomePage extends Component {
   handleOnClick = () => {
-    console.log(this.props.condition);
     this.props.fetchPlaces(this.props.condition);
   }
 
