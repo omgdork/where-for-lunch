@@ -10,12 +10,18 @@ import Condition from 'components/Condition/Condition';
 
 class HomePage extends Component {
   handleOnClick = () => {
+    console.log(this.props.condition);
     this.props.fetchPlaces(this.props.condition);
   }
 
   handleOnConditionChange = ({ radius, price }) => {
-    this.props.setRadius(radius);
-    this.props.setPrice(price);
+    if (radius) {
+      this.props.setRadius(radius);
+    }
+
+    if (price) {
+      this.props.setPrice(price.join(','));
+    }
   }
 
   render() {
