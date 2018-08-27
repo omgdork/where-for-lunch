@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Input from 'components/Input/Input';
-import Checkbox from 'components/Checkbox/Checkbox';
+import Input from '../../components/Input/Input';
+import Checkbox from '../../components/Checkbox/Checkbox';
 import styles from './Condition.css';
 
 export default class Condition extends PureComponent {
@@ -15,21 +15,20 @@ export default class Condition extends PureComponent {
     prices: ['$', '$$', '$$$', '$$$$'],
   }
 
-  state = { ...this.props.condition };
-
   handleOnBlurAction = (e) => {
-    this.setState({
+    this.props.action({
       radius: e.target.value,
-    }, () => this.props.action(this.state));
+    });
   }
 
   handleCheckboxChange = (value, isChecked) => {
-    const prices = this.state.price ? this.state.price.split(',') : [];
-    const updatedPrices = isChecked ? [...prices, value] : prices.filter(price => price !== value);
+    const { price } = this.props.condition;
+    const prices = price ? price.split(',') : [];
+    const updatedPrices = isChecked ? [...prices, value] : prices.filter(p => p !== value);
 
-    this.setState({
-      price: updatedPrices.join(','),
-    }, () => this.props.action(this.state));
+    this.props.action({
+      price: updatedPrices,
+    });
   }
 
   render() {
